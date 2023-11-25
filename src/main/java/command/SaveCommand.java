@@ -2,8 +2,8 @@ package command;
 
 import managers.DataManager;
 
-public class ShowCommand extends AbstractCommand {
-    public ShowCommand(String description) {
+public class SaveCommand extends  AbstractCommand{
+    public SaveCommand(String description) {
         super(description);
     }
 
@@ -14,6 +14,6 @@ public class ShowCommand extends AbstractCommand {
             return;
         }
         DataManager dm = DataManager.getInstance();
-        System.out.println(dm.getMusicBands());
+        dm.saveDataToFile(dm.getFm().getFile());
     }
 }

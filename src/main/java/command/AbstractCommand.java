@@ -9,5 +9,5 @@ public abstract class AbstractCommand {
     protected String getDescription(){
         return DESCRIPTION;
     };
-    public abstract void execute();
+    public abstract void execute(String[] args);
 }

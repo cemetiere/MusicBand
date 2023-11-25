@@ -1,6 +1,6 @@
 package command;
 
-import utils.MusicBand;
+import model.MusicBand;
 import managers.DataManager;
 
 import java.util.LinkedHashMap;
@@ -11,7 +11,11 @@ public class InfoCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute(String[] args) {
+        if(args.length!=0){
+            System.out.println("Unknown argument. Enter \"help\" for help. ");
+            return;
+        }
         DataManager dm = DataManager.getInstance();
         LinkedHashMap<Long, MusicBand> bands = dm.getMusicBands();
         System.out.println("Length: "+ bands.size() + "\n" +

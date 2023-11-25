@@ -1,4 +1,4 @@
-package utils;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,6 @@ public class MusicBand {
     private String name;
     private Coordinates coordinates;
     private Long albumsCount;
-    private String description;
     private MusicGenre genre;
     private Album bestAlbum;
 

@@ -1,4 +1,4 @@
-package utils;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Coordinates {
-    private Integer x;
+    private int x;
     private int y;
 }

@@ -3,14 +3,28 @@ package managers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import utils.MusicBand;
+import lombok.Getter;
+import model.MusicBand;
 import java.io.*;
 import java.util.LinkedHashMap;
 
 public class FileManager {
+    private static volatile FileManager INSTANCE;
     private final Gson gson = new Gson();
+    @Getter private File file;
+    private FileManager(){}
+    public static FileManager getInstance(){
+        if (INSTANCE==null){
+            synchronized (FileManager.class){
+                if(INSTANCE==null){
+                    INSTANCE = new FileManager();
+                }
+            }
+        }
+        return INSTANCE;
+    }
     public File openOrCreateFile(String path){
-        File file = new File(path);
+        file = new File(path);
         if(file.exists()){
             System.out.println("Opening an existing file...");
         } else {

@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         CommandManager cm = CommandManager.getInstance();
-        FileManager fm = new FileManager();
+        FileManager fm = FileManager.getInstance();
         File file = fm.openOrCreateFile(args[0]);
         DataManager.getInstance().initDataFromFile(file);
         String[] str;
