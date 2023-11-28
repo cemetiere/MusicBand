@@ -36,4 +36,12 @@ public class DataManager {
     public void addElement(Long key, MusicBand band){
         musicBands.put(key, band);
     }
+    public void removeElement(Long id){
+        MusicBand mb = musicBands.remove(id);
+        if(mb == null){
+            System.out.println("Element by this id was not found");
+        } else {
+            System.out.println("Element with id "+ id + " was successfully removed!");
+        }
+    }
 }

@@ -26,7 +26,7 @@ public class ExitCommand extends AbstractCommand{
             input = scanner.nextLine();
             switch (input.trim().toLowerCase()){
                 case "yes":
-                    cm.getCommands().get("save").execute(null);
+                    cm.getCommands().get("save").execute(new String[0]);
                     hlt = true;
                     break;
                 case "no":

@@ -5,7 +5,9 @@ import model.Album;
 import model.Coordinates;
 import model.MusicBand;
 import model.MusicGenre;
+import utils.UserIO;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,6 +18,7 @@ public class InsertCommand extends AbstractCommand{
 
     @Override
     public void execute(String[] args) {
+        UserIO io = UserIO.getInstance();
         Long id;
         if(args.length!=1){
             System.out.println("Need one argument - music band's ID type Long");
@@ -34,12 +37,15 @@ public class InsertCommand extends AbstractCommand{
         MusicGenre genre = null;
         Album bestAlbum = null;
         boolean ok = false;
-        Scanner scanner = new Scanner(System.in);
-
         while (!ok){
             System.out.print("Enter music band name: ");
-            name = scanner.nextLine().trim();
-            if (!name.isEmpty()){
+            try{
+                name = io.readLine().trim();
+            } catch(IOException e){
+                System.out.println(e.getMessage());
+            }
+
+            if (name!=null &&!name.isEmpty()){
                 ok = true;
             } else {
                 System.out.println("Name must be more than 0 symbols)");
@@ -51,7 +57,12 @@ public class InsertCommand extends AbstractCommand{
             System.out.print("Enter x and y coordinate: ");
             int x;
             int y;
-            String[] line = scanner.nextLine().trim().split(" ");
+            String[] line = new String[0];
+            try{
+                line = io.readLine().trim().split(" ");
+            }catch (IOException e){
+                System.out.println(e.getMessage());
+            }
             if(line.length !=2 ){
                 System.out.println("You must enter two int numbers - x and y");
                 continue;
@@ -70,7 +81,7 @@ public class InsertCommand extends AbstractCommand{
         while(!ok){
             System.out.print("Enter albums count: ");
             try{
-                albumsCount = Long.parseLong(scanner.nextLine().trim());
+                albumsCount = Long.parseLong(io.readLine().trim());
             } catch (Exception e){
                 System.out.println("You must enter one number type long!");
                 continue;
@@ -80,7 +91,12 @@ public class InsertCommand extends AbstractCommand{
         ok = false;
         while (!ok){
             System.out.print("Choose one music genre ("+ Arrays.toString(MusicGenre.values())+"): ");
-            String line = scanner.nextLine().trim();
+            String line = "";
+            try{
+                line = io.readLine().trim();
+            }catch (IOException e){
+                System.out.println(e.getMessage());
+            }
             try{
                 genre = MusicGenre.valueOf(line);
             }catch (Exception e){
@@ -94,7 +110,12 @@ public class InsertCommand extends AbstractCommand{
             System.out.print("Enter best albums name and length: ");
             String albumName;
             int albumLength;
-            String[] line = scanner.nextLine().trim().split(" ");
+            String[] line = new String[0];
+            try{
+                line = io.readLine().trim().split(" ");
+            } catch (IOException e){
+                System.out.println(e.getMessage());
+            }
             if(line.length !=2 ){
                 System.out.println("You must enter name and length (2 values)!");
                 continue;
