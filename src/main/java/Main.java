@@ -16,7 +16,6 @@ public class Main {
         DataManager.getInstance().initDataFromFile(file);
         String[] str = new String[0];
         do{
-            System.out.print(">> ");
             String input = io.readLine();
             if(input==null){
                 System.out.println("End of stream");

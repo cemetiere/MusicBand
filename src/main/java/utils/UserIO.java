@@ -33,6 +33,9 @@ public class UserIO {
         br = new BufferedReader(isr);
     }
     public String readLine() throws IOException {
+        if(!(inputStack.getLast() instanceof FileInputStream)){
+            System.out.print(">> ");
+        }
         String str = br.readLine();
         if(str == null){
             inputStack.pop();

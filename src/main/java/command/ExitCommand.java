@@ -1,7 +1,9 @@
 package command;
 
 import managers.CommandManager;
+import utils.UserIO;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ExitCommand extends AbstractCommand{
@@ -17,13 +19,17 @@ public class ExitCommand extends AbstractCommand{
             return;
         }
         CommandManager cm = CommandManager.getInstance();
-        Scanner scanner = new Scanner(System.in);
+        UserIO io = UserIO.getInstance();
         System.out.println("Do you want to save data to file before exit? (Yes/No)");
-        String input;
+        String input = "";
         boolean hlt = false;
         do {
-            System.out.print(">> ");
-            input = scanner.nextLine();
+            try {
+                input = io.readLine();
+            } catch (IOException e){
+                System.out.println(e.getMessage());
+            }
+
             switch (input.trim().toLowerCase()){
                 case "yes":
                     cm.getCommands().get("save").execute(new String[0]);

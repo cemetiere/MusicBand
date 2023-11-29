@@ -38,7 +38,7 @@ public class InsertCommand extends AbstractCommand{
         Album bestAlbum = null;
         boolean ok = false;
         while (!ok){
-            System.out.print("Enter music band name: ");
+            System.out.println("Enter music band name: ");
             try{
                 name = io.readLine().trim();
             } catch(IOException e){
@@ -54,7 +54,7 @@ public class InsertCommand extends AbstractCommand{
         ok = false;
 
         while (!ok){
-            System.out.print("Enter x and y coordinate: ");
+            System.out.println("Enter x and y coordinate: ");
             int x;
             int y;
             String[] line = new String[0];
@@ -79,7 +79,7 @@ public class InsertCommand extends AbstractCommand{
         }
         ok = false;
         while(!ok){
-            System.out.print("Enter albums count: ");
+            System.out.println("Enter albums count: ");
             try{
                 albumsCount = Long.parseLong(io.readLine().trim());
             } catch (Exception e){
@@ -90,7 +90,7 @@ public class InsertCommand extends AbstractCommand{
         }
         ok = false;
         while (!ok){
-            System.out.print("Choose one music genre ("+ Arrays.toString(MusicGenre.values())+"): ");
+            System.out.println("Choose one music genre ("+ Arrays.toString(MusicGenre.values())+"): ");
             String line = "";
             try{
                 line = io.readLine().trim();
@@ -107,7 +107,7 @@ public class InsertCommand extends AbstractCommand{
         }
         ok = false;
         while (!ok){
-            System.out.print("Enter best albums name and length: ");
+            System.out.println("Enter best albums name and length: ");
             String albumName;
             int albumLength;
             String[] line = new String[0];
